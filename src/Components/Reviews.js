@@ -16,6 +16,7 @@ function Review() {
           <Card.Text>
             Description
           </Card.Text>
+          <h3>9/10</h3>
           <Button variant="primary">View Review</Button>
           <Rating/>
         </Card.Body>
@@ -29,6 +30,7 @@ function Review() {
           <Card.Text>
             Description
           </Card.Text>
+          <h3>9/10</h3>
           <Button variant="primary">View Review</Button>
           <Rating />
         </Card.Body>
@@ -41,6 +43,7 @@ function Review() {
           <Card.Text>
             Description
           </Card.Text>
+          <h3>9/10</h3>
           <Button variant="primary">View Review</Button>
           <Rating/>
         </Card.Body>

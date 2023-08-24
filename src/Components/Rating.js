@@ -8,8 +8,8 @@ function Rating () {
  const [hover, setHover] = useState(null);
 
   return (
-   <div>
-      {[...Array(5)].map((star,index) => {
+   <div className="mt-4">
+      {[...Array(5)].map((star, index) => {
         const currentRating = index + 1;
         return (
           <label>
@@ -21,8 +21,7 @@ function Rating () {
               onClick={() => setStar(currentRating)}
             />
             <FaStar 
-              className="cursor-pointer"
-              size={20}
+              size={30}
               color={currentRating <= (hover || rating) ? "#FFD700" : "#808080"}
               onMouseEnter={() => setHover(currentRating)}
               onMouseLeave={() => setHover(null)}

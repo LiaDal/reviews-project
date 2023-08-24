@@ -7,14 +7,14 @@ function SearchBar() {
       <Container className="mt-5">
         <Row className="justify-content-center">
           <Col sm={6}>
-            <Form className="d-flex">
+            <Form className="d-flex" onSubmit={(e) => e.preventDefault()}>
               <Form.Control
                 type="search"
                 placeholder="Search"
                 className="me-2"
                 aria-label="Search"
               />
-              <Button>Search</Button>
+              <Button type='submit'>Search</Button>
             </Form>
           </Col>
         </Row>
