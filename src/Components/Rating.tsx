@@ -8,21 +8,26 @@ function Rating () {
  const [hover, setHover] = useState(null);
 
   return (
+
    <div className="mt-4">
       {[...Array(5)].map((star, index) => {
         const currentRating = index + 1;
         return (
+
           <label>
             <input
               className="d-none"
               type="radio"
               name="rating"
               value={currentRating}
+
               onClick={() => setStar(currentRating)}
             />
             <FaStar 
               size={30}
+
               color={currentRating <= (hover || rating) ? "#FFD700" : "#808080"}
+
               onMouseEnter={() => setHover(currentRating)}
               onMouseLeave={() => setHover(null)}
             />

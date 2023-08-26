@@ -5,10 +5,10 @@ import Login from "./Components/Login"
 import Signup from "./Components/Signup"
 import Reviews from "./Components/Reviews"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Rating from './Components/Rating';
 
 function App() {
   return (
+
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />}></Route>

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 function Signup() {
 
   return (
+
     <div className="signup template d-flex justify-content-center align-items-center 200-w bg-dark">
       <div className="50-w p-4">
         <form>
@@ -27,7 +28,6 @@ function Signup() {
           <div className="d-grid">
             <button className="btn btn-primary">Sign Up</button>
             <p className="mt-2 text-light">
-              Already registered?  
               <Link to="/" className="ms-2 text-primary">Log In</Link>
             </p>
           </div>

@@ -1,10 +1,10 @@
-create TABLE user(
+CREATE TABLE 'user'(
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
     email VARCHAR(255)
 ) 
 
-create TABLE review(
+CREATE TABLE 'review'(
     id SERIAL PRIMARY KEY,
     title VARCHAR(255),
     group VARCHAR(255),
@@ -16,10 +16,10 @@ create TABLE review(
     user_id
 ) 
 
-create TABLE groups(
+CREATE TABLE 'groups'(
   item VARCHAR(255)   
 ) 
 
-create TABLE tags(
+CREATE TABLE 'tags'(
   tag VARCHAR(255)  
 ) 

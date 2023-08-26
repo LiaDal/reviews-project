@@ -20,6 +20,7 @@ export interface AppConfigT {
 }
 
 export function createAppConfig (): AppConfigT {
+
   const config = cosmiconfigSync(process.env.CONFIG ?? 'app_').search()
     ?.config as InitialAppConfigT
   const retConfig = {

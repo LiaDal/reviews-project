@@ -4,6 +4,7 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 
 function SearchBar() {
     return (
+
       <Container className="mt-5">
         <Row className="justify-content-center">
           <Col sm={6}>
