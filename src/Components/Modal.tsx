@@ -3,17 +3,26 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Link } from "react-router-dom";
 
-export default function ModalSingup() {
+export default function ModalLogin() {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <div>
-      <div className="signup template d-flex justify-content-center align-items-center mt-5">
-      <div className="50-w p-4 border border-primary rounded">
+      <Button className="position-absolute top-0 end-0 m-2 p-2" variant="primary" onClick={handleShow}>
+        Sing in
+      </Button>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Sign In</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        <div className="login template d-flex justify-content-center align-items-center 200-w">
+      <div className="50-w p-4">
         <form>
-          <div className="mb-2">
-            <label htmlFor="name" className="text-dark">Name</label>
-            <input type="text" placeholder="Enter Your Name" className="form-control"/>
-          </div>
           <div className="mb-2">
             <label htmlFor="email" className="text-dark">Email</label>
             <input type="email" placeholder="Enter Email" className="form-control"/>
@@ -27,14 +36,14 @@ export default function ModalSingup() {
             <label htmlFor="check" className="custom-input-label ms-2 text-dark">Remember me</label> 
           </div>
           <div className="d-grid">
-            <button className="btn btn-primary mt-2">Sign Up</button>
-            <p className="mt-2 text-dark">
-              <Link to="/" className="ms-2 text-primary">Log In</Link>
-            </p>
+            <button className="mt-2 btn btn-primary">Log in</button>
+            <Link to="/signup" className="ms-2 text-primary">Sign up</Link>
           </div>
         </form>
       </div>
-    </div>
+    </div>  
+        </Modal.Body>
+      </Modal>
     </div>
   );
 }
