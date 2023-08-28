@@ -1,16 +1,15 @@
 import { AppConfigT, createAppConfig } from "./config/config";
+import { DBApp } from "./db/db";
 
 export class ServerApp {
     config: AppConfigT
+    db: DBApp
     constructor () {
         this.config = createAppConfig()
+        this.db = new DBApp(this.config)
     }
 
-    initDB() {
-        // init pg promise
-
-        // SQL => create table users if not exists
-
-        // SQL => list all user
+    async init() {
+        await this.db.init()
     }
 }
