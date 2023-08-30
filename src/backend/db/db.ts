@@ -22,10 +22,6 @@ export class DBApp {
     async init() {
         await this.users.create()
 
-        // TODO remove
-        await this.users.add()
-        console.log('DONE')
-
-        // list all users
+        // await this.reviws.create()
     }
 }

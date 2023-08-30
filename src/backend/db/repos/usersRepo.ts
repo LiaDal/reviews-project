@@ -1,5 +1,6 @@
 import { IDatabase, IMain } from "pg-promise";
 import { users } from "../sql/sql";
+import { DbUser, IUser } from "../models/users";
 
 export class UsersRepository {
     constructor(private db: IDatabase<any>, private pgp: IMain) {
@@ -8,13 +9,14 @@ export class UsersRepository {
     }
 
     async create(): Promise<void> {
-        console.log('users create', users.create);
-        await this.db.none(users.create);
-        console.log('completed');
-        return Promise.resolve()
+        return await this.db.none(users.create)
     }
 
-    async add(): Promise<void> {
-        await this.db.oneOrNone(users.add, { name: 'some_name', email: 'some@email.com' })
+    async add(user: IUser): Promise<void> {
+        await this.db.oneOrNone(users.add, user)
+    }
+
+    async all(): Promise<DbUser[]> {
+        return await this.db.any(users.all)
     }
 }
