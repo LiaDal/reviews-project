@@ -9,6 +9,7 @@ export const users = {
 
 export const reviews = {
     create: sql('reviews/create.sql'),
+    all: sql('reviews/all.sql')
 };
 
 function sql(file: string): QueryFile {

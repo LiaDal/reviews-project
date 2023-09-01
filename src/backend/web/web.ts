@@ -19,18 +19,15 @@ export class WebApp {
             next()
         });
 
-        this.app.get(`${this.apiUrl}/users`, async (_, res) => {
-            console.log('fff')
+        this.app.get(`/`, async (_, res) => {
             const users = await this.db.users.all()
             res.send(users)
+            const reviews = await this.db.reviews.all()
+            console.log(reviews)
         })
 
-        // this.app.all('*', (_, res) => {
-        //     res.send('OKKK')
-        // })
-
         await this.app.listen(this.port, () => {
-            console.log('Express app listen on', this.port)
+            console.log(`Express app listen on ${this.port}`)
         })
     }
 }
