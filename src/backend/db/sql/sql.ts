@@ -4,12 +4,15 @@ import {join} from 'path';
 export const users = {
     create: sql('users/create.sql'),
     add: sql('users/add.sql'),
-    all: sql('users/all.sql')
+    all: sql('users/all.sql'),
+    deleteAll: sql('users/deleteAll.sql')
 };
 
 export const reviews = {
     create: sql('reviews/create.sql'),
-    all: sql('reviews/all.sql')
+    add: sql('reviews/add.sql'),
+    all: sql('reviews/all.sql'),
+    deleteAll: sql('reviews/deleteAll.sql')
 };
 
 function sql(file: string): QueryFile {

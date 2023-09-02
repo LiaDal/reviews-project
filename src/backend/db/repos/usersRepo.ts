@@ -19,4 +19,8 @@ export class UsersRepository {
     async all(): Promise<DbUser[]> {
         return await this.db.any(users.all)
     }
+
+    async deleteAll(): Promise<DbUser[]> {
+        return await this.db.any(users.deleteAll)
+    }
 }

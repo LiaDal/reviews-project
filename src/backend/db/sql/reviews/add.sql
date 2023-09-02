@@ -1,7 +1,7 @@
 INSERT INTO reviews (
-    title, content
+    title, groups, user_id, tags, content, rating
 )
 VALUES (
-    ${name}, ${email}
+    ${title}, ${groups}, ${user_id}, ${tags}, ${content}, ${rating}
 )
 RETURNING *;

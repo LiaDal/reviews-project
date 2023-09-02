@@ -5,7 +5,7 @@ import { DBApp } from '../db/db'
 export class WebApp {
     app: Express
     port: number
-    apiUrl: '/api'
+    apiUrl = '/api'
     db: DBApp
     constructor (config: AppConfigT, dbApp: DBApp) {
         this.app = express()
@@ -19,11 +19,14 @@ export class WebApp {
             next()
         });
 
-        this.app.get(`/`, async (_, res) => {
+        this.app.get(`${this.apiUrl}/users`, async (_, res) => {
             const users = await this.db.users.all()
             res.send(users)
+        })
+
+        this.app.get(`${this.apiUrl}/reviews`, async (_, res) => {
             const reviews = await this.db.reviews.all()
-            console.log(reviews)
+            res.send(reviews)
         })
 
         await this.app.listen(this.port, () => {

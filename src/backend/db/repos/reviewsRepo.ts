@@ -1,6 +1,6 @@
 import { IDatabase, IMain } from "pg-promise";
 import { reviews } from "../sql/sql";
-import { DbReview } from "../models/reviews";
+import { DbReview, IReview } from "../models/reviews";
 
 export class ReviewsRepository {
     constructor(private db: IDatabase<any>, private pgp: IMain) {
@@ -16,4 +16,11 @@ export class ReviewsRepository {
         return await this.db.any(reviews.all)
     }
 
+    async add(review: IReview): Promise<DbReview> {
+        return await this.db.one(reviews.add, review)
+    }
+
+    async deleteAll(): Promise<DbReview[]> {
+        return await this.db.any(reviews.deleteAll)
+    }
 }
