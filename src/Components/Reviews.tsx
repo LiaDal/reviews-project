@@ -7,6 +7,7 @@ import Rating from './Rating';
 import book from '../Components/book.jpg';
 
 function Review() {
+  // useeffect() fetch => api/reviews
   return (
 
     <div className="d-flex justify-content-around">
@@ -20,7 +21,7 @@ function Review() {
           </Card.Text>
           <h3>9/10</h3>
           <Button variant="primary">View Review</Button>
-          <Rating/>
+          <Rating />
         </Card.Body>
       </Card>
       <Card className="w-25 p-3 mt-5">
@@ -47,10 +48,10 @@ function Review() {
           </Card.Text>
           <h3>9/10</h3>
           <Button variant="primary">View Review</Button>
-          <Rating/>
+          <Rating />
         </Card.Body>
       </Card>
-    </div> 
+    </div>
   );
 }
 

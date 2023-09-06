@@ -14,7 +14,7 @@
     "checkJs": false,
     "jsx": "preserve",
     "noImplicitAny": false,
-    "strictNullChecks": false,
+    "strictNullChecks": true,
     "typeRoots": [
       "./src/declaration.d.ts",
       "./node_modules/@types"
