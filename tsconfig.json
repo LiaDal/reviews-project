@@ -1,6 +1,7 @@
 {
   "include": [
-    "src"
+    "src",
+    "src/index.tsx"
   ],
   "compilerOptions": {
     "target": "es2016",
@@ -16,7 +17,7 @@
     "noImplicitAny": false,
     "strictNullChecks": true,
     "typeRoots": [
-      "./src/declaration.d.ts",
+      "src/declaration.d.tsx",
       "./node_modules/@types"
     ],
     "esModuleInterop": true,
