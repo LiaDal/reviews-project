@@ -1,3 +1,4 @@
+// import { http } from 'node:http';
 import express from 'express';
 import type { Express } from 'express';
 import type { AppConfigT } from '../config/config';
@@ -5,6 +6,7 @@ import type { DBApp } from '../db/db';
 
 export class WebApp {
   app: Express
+  // server: http.Server
   port: number
   apiUrl = '/api'
   db: DBApp
@@ -31,9 +33,22 @@ export class WebApp {
       res.send(reviews)
     })
 
-    await this.app.listen(this.port, () => {
-      console.log(`Express app listen on ${this.port}`)
+    this.app.get(`${this.apiUrl}/login`, async (req, res) => {
+      // re
+      req.body
+      // res.send(reviews)
     })
+
+    await new Promise<void>((resolve, reject) => {
+      this.app.listen(this.port, () => {
+        console.log(`Express app listen on ${this.port}`)
+        resolve()
+      })
+    })
+  }
+
+  async destroy() {
+    
   }
 }
 

@@ -1,43 +1,32 @@
 module.exports = {
-    "env": {
-        "browser": true,
-        "es6": true,
-        "node": true
+  env: {
+    browser: true,
+    es6: true,
+    node: true,
+  },
+  extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:prettier/recommended'],
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
     },
-    "extends": "standard-with-typescript",
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 2018,
-        "sourceType": "module"
-    },
-    // "plugins": [
-    //     "react"
-    // ],
-    // ignorePatters: [],
-    "rules": {
-        "@typescript-eslint/quotes": "off",
-        "@typescript-eslint/semi": "off",
-        "@typescript-eslint/explicit-function-return-type": "off",
-        "@typescript-eslint/prefer-nullish-coalescing": "off",
-        "@typescript-eslint/no-confusing-void-expression": "error",
-        "checksVoidReturn": false,
-        // "indent": [
-        //     "error",
-        //     4
-        // ],
-        // "linebreak-style": [
-        //     "error",
-        //     "unix"
-        // ],
-        // "quotes": [
-        //     "error",
-        //     "double"
-        // ],
-        // "semi": [
-        //     "error",
-        //     "always"
-        // ]
-    }
-};
+    ecmaVersion: 2018,
+    sourceType: 'module',
+  },
+  plugins: ['react'],
+  // ignorePatters: [],
+  rules: {
+    'react/react-in-jsx-scope': 'off',
+    'prettier/prettier': [
+      'error',
+      {
+        trailingComma: 'all',
+        tabWidth: 2,
+        semi: false,
+        singleQuote: true,
+        bracketSpacing: true,
+        eslintIntegration: true,
+        printWidth: 120,
+      },
+    ],
+  },
+}

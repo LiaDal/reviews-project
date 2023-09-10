@@ -9,8 +9,10 @@ export default function Login() {
   const handleClose = () => { setShow(false) };
   const handleShow = () => { setShow(true) };
 
+
+  
   return (
-    <div className="d-flex justify-content-center align-item-center w-25 p-2 border shadow-sm m-5 rounded">
+    <div className="d-flex justify-content-center align-item-center w-25 p-4 border shadow-sm m-5 rounded">
       <Form>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>

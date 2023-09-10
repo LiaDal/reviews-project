@@ -11,7 +11,7 @@ export class DBApp {
     pgp: IMain
     users: UsersRepository
     reviews: ReviewsRepository
-    constructor (config: AppConfigT) {
+    constructor(config: AppConfigT) {
         const pgp: IMain = pgPromise();
         this.pgp = pgp;
 
@@ -25,7 +25,15 @@ export class DBApp {
 
     async init() {
         await this.users.create()
-
         await this.reviews.create()
+    }
+
+    async clean() {
+        await this.reviews.deleteAll()
+        await this.users.deleteAll()
+    }
+
+    async destroy(): Promise<void> {
+        await this.db.$pool.end()
     }
 }

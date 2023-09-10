@@ -1,7 +1,7 @@
 INSERT INTO users (
-    name, email
+    name, email, password_hash
 )
 VALUES (
-    ${name}, ${email}
+    ${name}, ${email}, ${password_hash}
 )
 RETURNING *;

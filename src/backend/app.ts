@@ -6,14 +6,19 @@ export class ServerApp {
   config: AppConfigT
   db: DBApp
   web: WebApp
-  constructor () {
+  constructor() {
     this.config = createAppConfig()
     this.db = new DBApp(this.config)
     this.web = new WebApp(this.config, this.db)
   }
 
-  async init () {
+  async init() {
     await this.db.init()
     await this.web.init()
+  }
+
+  async destroy() {
+    await this.db.destroy()
+    await this.web.destroy()
   }
 }

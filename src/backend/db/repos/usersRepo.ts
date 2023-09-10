@@ -9,7 +9,7 @@ export class UsersRepository {
     }
 
     async create(): Promise<void> {
-        return await this.db.none(users.create)
+        await this.db.none(users.create)
     }
 
     async add(user: IUser): Promise<void> {
