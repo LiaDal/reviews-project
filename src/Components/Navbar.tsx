@@ -10,9 +10,11 @@ function BasicExample() {
         <Navbar.Brand href="#home">Review App</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Log in</Nav.Link>
-            <Nav.Link href="#link">Sing Up</Nav.Link>
+          <Nav>
+            <Nav.Link href="/">Main</Nav.Link>
+            <Nav.Link href="login">Login</Nav.Link>
+            <Nav.Link href="singup">SingUp</Nav.Link>
+            <Nav.Link href="dashboard">Dashboard</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
