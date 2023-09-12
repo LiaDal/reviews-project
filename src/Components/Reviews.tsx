@@ -21,7 +21,7 @@ function Review() {
   return (
     <>
       <div>{review.map((obj) => (
-        <div className="d-flex justify-content-around">
+        <div className="d-flex flex-row justify-content-around">
           <Card key={obj.id} className="w-25 p-3 mt-5">
             <Card.Header as="h5">{obj.title}</Card.Header>
             <Card.Img variant="top" src={book} />

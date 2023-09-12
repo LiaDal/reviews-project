@@ -39,6 +39,12 @@ export class WebApp {
       // res.send(reviews) 
     })
 
+    this.app.use('/login', (req, res) => {
+      res.send({
+        token: 'test123'
+      });
+    });
+
     await new Promise<void>((resolve, reject) => {
       this.app.listen(this.port, () => {
         console.log(`Express app listen on ${this.port}`)
