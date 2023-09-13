@@ -26,6 +26,7 @@ module.exports = {
         bracketSpacing: true,
         eslintIntegration: true,
         printWidth: 120,
+        endOfLine: 'auto',
       },
     ],
   },
