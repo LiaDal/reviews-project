@@ -1,40 +1,41 @@
-import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Navbar from './Navbar';
+import React, { useState } from 'react'
+import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
+import Navbar from './Navbar'
+import { API_URL } from '../utils/constants'
 
 export default function Signup() {
-
-  const [name, setName] = useState(''); 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   const handleSubmit = async (e) => {
-       e.preventDefault();
+    e.preventDefault()
 
-  await fetch('http://localhost:5173/singup', {
-    method: 'POST',
-    headers: {'Content-Type':'application/json'},
-    body: JSON.stringify({
-     name: 'name',
-     email: 'email',
-     password: 'password'
-    },)
-   })
-   .then((response) => response.json())
-   .then((userData) => {
-     console.log(userData)
-   })
-   .catch((error) => {
-     console.log('err: ', error);
-   });
+    await fetch(`${API_URL}/signup`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        password: password,
+      }),
+    })
+      .then((response) => response.json())
+      .then((userData) => {
+        console.log(userData)
+        // localStorage.setItem('me', ...)
+      })
+      .catch((error) => {
+        console.log('err: ', error)
+      })
   }
 
   return (
     <>
-    <Navbar/>
-    <div className="d-flex justify-content-center align-item-center">
-    <div className="d-flex justify-content-center align-item-center w-25 p-4 border shadow-sm m-5 rounded">
+      <Navbar />
+      <div className="d-flex justify-content-center align-item-center">
+        <div className="d-flex justify-content-center align-item-center w-25 p-4 border shadow-sm m-5 rounded">
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicName">
               <Form.Label>Name</Form.Label>
@@ -55,8 +56,8 @@ export default function Signup() {
               Sign Up
             </Button>
           </Form>
-    </div>
-    </div>
-   </> 
-  );
+        </div>
+      </div>
+    </>
+  )
 }

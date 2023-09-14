@@ -5,13 +5,7 @@ module.exports = {
     node: true,
   },
   extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:prettier/recommended'],
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-    ecmaVersion: 2018,
-    sourceType: 'module',
-  },
+  parser: '@typescript-eslint/parser',
   plugins: ['react'],
   // ignorePatters: [],
   rules: {
@@ -26,6 +20,7 @@ module.exports = {
         bracketSpacing: true,
         eslintIntegration: true,
         printWidth: 120,
+        endOfLine: 'auto',
       },
     ],
   },

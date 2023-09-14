@@ -1,12 +1,14 @@
-import React from 'react';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import React from 'react'
+import Container from 'react-bootstrap/Container'
+import Nav from 'react-bootstrap/Nav'
+import Navbar from 'react-bootstrap/Navbar'
 
 function BasicExample() {
+  // const user =  useContext(userContext)
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
+        {user ? null : <div></div>}
         <Navbar.Brand href="#home">Review App</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -19,7 +21,7 @@ function BasicExample() {
         </Navbar.Collapse>
       </Container>
     </Navbar>
-  );
+  )
 }
 
-export default BasicExample;
+export default BasicExample
