@@ -27,7 +27,7 @@ export default function Signup() {
         // localStorage.setItem('me', ...)
       })
       .catch((error) => {
-        console.log('err: ', error)
+        console.log(error)
       })
   }
 

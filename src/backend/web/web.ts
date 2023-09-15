@@ -36,7 +36,12 @@ export class WebApp {
     })
 
     this.app.post(`${this.apiUrl}/signup`, express.json(), async (req, res) => {
-      // console.log('!!! req.body', req.headers['content-type'], req.body)
+      const addUser = await this.db.users.add({
+        name: req.body.name,
+        email: req.body.email,
+        password_hash: req.body.password,
+      })
+      res.send(addUser)
 
       // if user exists with the same email/name => 409
       // save to db

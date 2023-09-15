@@ -11,27 +11,29 @@ function Rating() {
       {[...Array(5)].map((star, index) => {
         const currentRating = index + 1
         return (
-          <label>
-            <input
-              className="d-none"
-              type="radio"
-              name="rating"
-              value={currentRating}
-              onClick={() => {
-                setStar(currentRating)
-              }}
-            />
-            <FaStar
-              size={30}
-              color={currentRating <= ((hover as boolean) || rating) ? '#FFD700' : '#808080'}
-              onMouseEnter={() => {
-                setHover(currentRating)
-              }}
-              onMouseLeave={() => {
-                setHover(null)
-              }}
-            />
-          </label>
+          <React.Fragment key={index}>
+            <label>
+              <input
+                className="d-none"
+                type="radio"
+                name="rating"
+                value={currentRating}
+                onClick={() => {
+                  setStar(currentRating)
+                }}
+              />
+              <FaStar
+                size={30}
+                color={currentRating <= ((hover as boolean) || rating) ? '#FFD700' : '#808080'}
+                onMouseEnter={() => {
+                  setHover(currentRating)
+                }}
+                onMouseLeave={() => {
+                  setHover(null)
+                }}
+              />
+            </label>
+          </React.Fragment>
         )
       })}
     </div>
