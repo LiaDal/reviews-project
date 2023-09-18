@@ -36,26 +36,36 @@ export class WebApp {
     })
 
     this.app.post(`${this.apiUrl}/signup`, express.json(), async (req, res) => {
-      const addUser = await this.db.users.add({
-        name: req.body.name,
-        email: req.body.email,
-        password_hash: req.body.password,
-      })
-      res.send(addUser)
+      const email = req.body.email
+      const name = req.body.name
 
-      // if user exists with the same email/name => 409
-      // save to db
+      try {
+        const addUser = await this.db.users.add({
+          name: name,
+          email: email,
+          password_hash: req.body.password,
+        })
+        res.send(addUser)
+      } catch (err) {
+        if (err.code == '23505') {
+          console.error('Email Already Exists!')
+          res.sendStatus(409)
+          // status(409).send()
+        } else {
+          console.error('Something Went Wrong!')
+          res.sendStatus(500)
+        }
+      }
 
       // res.cookie('session', 'ok', { maxAge: ..., httpOnly: true })
       // return to browser new db user
-      res.send()
     })
 
     this.app.post(`${this.apiUrl}/login`, async (req, res) => {
       // nameOrEmail
       // get user by email from db
       // get user by name from db
-      // user not found => 401
+      // user not found => res.status(401).send("An error occured");
       // res.cookie('session', 'ok', { maxAge: ..., httpOnly: true })
       // user found => 200 res.send(dbUser)
     })

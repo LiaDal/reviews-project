@@ -2,12 +2,15 @@ import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import Navbar from './Navbar'
+import { useNavigate } from 'react-router-dom'
 import { API_URL } from '../utils/constants'
+import swal from 'sweetalert'
 
 export default function Signup() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -22,12 +25,16 @@ export default function Signup() {
       }),
     })
       .then((response) => response.json())
-      .then((userData) => {
-        console.log(userData)
-        // localStorage.setItem('me', ...)
+      .then((data) => {
+        console.log(data)
+        swal('Good job!', 'You clicked the button!', 'success')
+        navigate('/dashboard')
+        localStorage.setItem('user', data)
       })
       .catch((error) => {
-        console.log(error)
+        console.log(error.response)
+        swal('Email already exist', 'Try again', 'error')
+        navigate('/login')
       })
   }
 

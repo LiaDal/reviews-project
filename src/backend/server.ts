@@ -1,8 +1,8 @@
-import { ServerApp } from "./app";
+import { ServerApp } from './app'
 
-const serverApp = new ServerApp();
+const serverApp = new ServerApp()
 
-serverApp.init().catch(err => {
-  console.error('Error catched', err);
+serverApp.init().catch((err) => {
+  console.error('Error catched', err)
   process.exit(1)
 })

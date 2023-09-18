@@ -23,12 +23,11 @@ export interface AppConfigT {
   web: WebConfigT
 }
 
-export function createAppConfig (): AppConfigT {
-  const config = cosmiconfigSync(process.env.CONFIG ?? 'app_').search()
-    ?.config as InitialAppConfigT
+export function createAppConfig(): AppConfigT {
+  const config = cosmiconfigSync(process.env.CONFIG ?? 'app_').search()?.config as InitialAppConfigT
   const retConfig = {
     db: config.db_section,
-    web: config.web_section
+    web: config.web_section,
   }
   return retConfig as AppConfigT
 }

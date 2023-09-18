@@ -11,6 +11,7 @@
       "es2015",
       "es2016"
     ],
+    "useUnknownInCatchVariables": false,
     "allowJs": true,
     "checkJs": false,
     "jsx": "preserve",
