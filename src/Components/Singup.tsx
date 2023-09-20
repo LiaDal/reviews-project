@@ -18,6 +18,7 @@ export default function Signup() {
     await fetch(`${API_URL}/signup`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
       body: JSON.stringify({
         name: name,
         email: email,

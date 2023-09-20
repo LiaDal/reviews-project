@@ -17,13 +17,13 @@ export default function Login() {
     await fetch(`${API_URL}/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
       body: JSON.stringify({
         email: email,
         password: password,
       }),
     })
       .then((response) => {
-        // return response.json()
         if (response.ok) {
           return response.json()
         } else if (401 === response.status) {
