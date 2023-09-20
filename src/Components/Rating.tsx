@@ -3,8 +3,8 @@ import { FaStar } from 'react-icons/fa'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 function Rating() {
-  const [rating, setStar] = useState<any>(null)
-  const [hover, setHover] = useState<any>(null)
+  const [rating, setStar] = useState<number>(0)
+  const [hover, setHover] = useState<number>(0)
 
   return (
     <div className="mt-4">
@@ -24,12 +24,12 @@ function Rating() {
               />
               <FaStar
                 size={30}
-                color={currentRating <= ((hover as boolean) || rating) ? '#FFD700' : '#808080'}
+                color={currentRating <= ((hover as number) || rating) ? '#FFD700' : '#808080'}
                 onMouseEnter={() => {
                   setHover(currentRating)
                 }}
                 onMouseLeave={() => {
-                  setHover(null)
+                  setHover(0)
                 }}
               />
             </label>

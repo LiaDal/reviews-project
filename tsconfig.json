@@ -6,6 +6,9 @@
   "compilerOptions": {
     "target": "es2016",
     "module": "ESNext",
+    "types": [
+      "node"
+    ],
     "lib": [
       "dom",
       "es2015",

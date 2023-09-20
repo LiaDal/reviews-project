@@ -1,12 +1,11 @@
-// import { http } from 'node:http';
 import express from 'express'
+import bcrypt from 'bcrypt'
 import type { Express } from 'express'
 import type { AppConfigT } from '../config/config'
 import type { DBApp } from '../db/db'
 
 export class WebApp {
   app: Express
-  // server: http.Server
   port: number
   apiUrl = '/api'
   db: DBApp
@@ -38,45 +37,75 @@ export class WebApp {
     this.app.post(`${this.apiUrl}/signup`, express.json(), async (req, res) => {
       const email = req.body.email
       const name = req.body.name
+      const password = await bcrypt.hash(req.body.password, 10)
 
       try {
-        const addUser = await this.db.users.add({
-          name: name,
-          email: email,
-          password_hash: req.body.password,
+        const dbUser = await this.db.users.add({
+          name,
+          email,
+          password_hash: password,
         })
-        res.send(addUser)
+        console.log('dbuser', dbUser)
+        res
+          .cookie('user', req.body.email, {
+            maxAge: 1 * 24 * 60 * 60 * 1000,
+            httpOnly: true,
+          })
+          .send(dbUser)
+        console.log('senTTT')
       } catch (err) {
         if (err.code == '23505') {
-          console.error('Email Already Exists!')
+          console.error('Email or Name Already Exists!')
           res.sendStatus(409)
-          // status(409).send()
         } else {
           console.error('Something Went Wrong!')
           res.sendStatus(500)
         }
       }
-
-      // res.cookie('session', 'ok', { maxAge: ..., httpOnly: true })
-      // return to browser new db user
     })
 
-    this.app.post(`${this.apiUrl}/login`, async (req, res) => {
-      // nameOrEmail
-      // get user by email from db
-      // get user by name from db
-      // user not found => res.status(401).send("An error occured");
-      // res.cookie('session', 'ok', { maxAge: ..., httpOnly: true })
-      // user found => 200 res.send(dbUser)
+    this.app.post(`${this.apiUrl}/login`, express.json(), async (req, res) => {
+      const email = req.body.email
+      const password = req.body.password
+      const dbUser = await this.db.users.findByEmail(email)
+
+      if (dbUser != null) {
+        const isSamePassword = await bcrypt.compare(password, dbUser.password_hash)
+        if (isSamePassword) {
+          res
+            .cookie('user', req.body.email, {
+              maxAge: 1 * 24 * 60 * 60 * 1000,
+              httpOnly: true,
+            })
+            .send(dbUser)
+        } else {
+          res.status(401).send()
+          console.error('Invalid password')
+        }
+      } else {
+        console.error('An error occured')
+        res.sendStatus(401)
+      }
     })
 
     this.app.get(`${this.apiUrl}/logout`, async (req, res) => {
-      // Cache-Control: no-cache no-store
-      // res.clearCookie('session')
-      // res.send()
+      res.clearCookie('user')
+      res.header('Cache-Control', 'no-cache, no-store')
+      console.error('Logout successfull')
+      res.sendStatus(200)
     })
 
-    await new Promise<void>((resolve, reject) => {
+    // this.app.get(`${this.apiUrl}/me`, async (req, res) => {
+    //   // req.headers.cookie => 'password_hash' => dbUser
+    //   // if (dbUser) {
+    //   //   res.sendStatus(200)
+    //   // } else {
+    //   //   res.clearCookie('user')
+    //   //   res.sendStatus(401)
+    //   // }
+    // })
+
+    await new Promise<void>((resolve) => {
       this.app.listen(this.port, () => {
         console.log(`Express app listen on ${this.port}`)
         resolve()

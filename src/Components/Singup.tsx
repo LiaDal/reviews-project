@@ -24,17 +24,24 @@ export default function Signup() {
         password: password,
       }),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        // return response.json()
+        if (response.ok) {
+          return response.json()
+        } else if (409 === response.status) {
+          throw new Error('User already exists. Please choose another name or email')
+        }
+        throw new Error('Unable to fetch. Unexpected error')
+      })
       .then((data) => {
         console.log(data)
-        swal('Good job!', 'You clicked the button!', 'success')
+        swal('Success!', 'Your account has been successfully created.', 'success')
         navigate('/dashboard')
-        localStorage.setItem('user', data)
       })
       .catch((error) => {
         console.log(error.response)
         swal('Email already exist', 'Try again', 'error')
-        navigate('/login')
+        // navigate('/login')
       })
   }
 

@@ -6,7 +6,7 @@ export const users = {
   add: sql('users/add.sql'),
   all: sql('users/all.sql'),
   deleteAll: sql('users/deleteAll.sql'),
-  getUserByEmail: sql('users/getUserByEmail.sql'),
+  findByEmail: sql('users/findByEmail.sql'),
 }
 
 export const reviews = {

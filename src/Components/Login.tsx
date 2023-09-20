@@ -2,15 +2,19 @@ import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import Navbar from './Navbar'
+import swal from 'sweetalert'
+import { API_URL } from '../utils/constants'
+import { useNavigate } from 'react-router-dom'
 
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    await fetch('http://localhost:5173/login', {
+    await fetch(`${API_URL}/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -18,12 +22,23 @@ export default function Login() {
         password: password,
       }),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        // return response.json()
+        if (response.ok) {
+          return response.json()
+        } else if (401 === response.status) {
+          throw new Error('Invalid password or email')
+        }
+        throw new Error('Unable to fetch. Unexpected error')
+      })
       .then((userData) => {
         console.log(userData)
+        swal('Success!', 'You have successfully loged in.', 'success')
+        navigate('/dashboard')
       })
       .catch((error) => {
         console.error('err: ', error)
+        swal('Try again', 'Invalid email or password', 'error')
       })
   }
 
@@ -46,15 +61,13 @@ export default function Login() {
               <Form.Check type="checkbox" label="Remember me" />
             </Form.Group>
             <div className="d-flex flex-column">
-              <Button onSubmit={handleSubmit} variant="primary" type="submit" className="ms-5 w-50">
+              <Button onSubmit={handleSubmit} variant="primary" type="submit" className="mb-2">
                 Log in
               </Button>
-              {/* <p className="text-center">or</p>
-          <Link to="/singup">
-          <Button href="singup"  className="ms-2 text-light btn-success">
-            Sign up
-          </Button>
-          </Link> */}
+              <p className="text-center">or</p>
+              <Button href="singup" variant="success">
+                Sign up
+              </Button>
             </div>
           </Form>
         </div>

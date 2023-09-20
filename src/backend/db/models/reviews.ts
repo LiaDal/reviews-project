@@ -1,6 +1,5 @@
 export interface IReview {
   title: string
-  name: string
   content: string
   rating: number
   groups: string
