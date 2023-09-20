@@ -7,7 +7,8 @@
     "target": "es2016",
     "module": "ESNext",
     "types": [
-      "node"
+      "node",
+      "vite/client"
     ],
     "lib": [
       "dom",
@@ -22,7 +23,9 @@
     "strictNullChecks": true,
     "typeRoots": [
       "src/declaration.d.tsx",
-      "./node_modules/@types"
+      "./types",
+      "./node_modules/@types",
+      "./node_modules"
     ],
     "esModuleInterop": true,
     "skipLibCheck": true,
