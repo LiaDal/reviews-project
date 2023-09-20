@@ -16,6 +16,7 @@
     "react-icons": "^4.10.1",
     "react-notifications-component": "^4.0.1",
     "react-router-dom": "^6.15.0",
+    "react-tagcloud": "^2.3.1",
     "sweetalert": "^2.1.2"
   },
   "scripts": {

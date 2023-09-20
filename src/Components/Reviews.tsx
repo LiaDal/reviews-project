@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import { useEffect, useState } from 'react'
 import Rating from './Rating'
-import book from '../Components/book.jpg'
+import book from '../Components/img/book.jpg'
 
 function Review() {
   const [review, setReview] = useState<any[]>([])
@@ -22,7 +22,7 @@ function Review() {
       <div>
         {review.map((obj) => (
           <React.Fragment key={obj.id}>
-            <div className="d-flex justify-content-around">
+            <div className="d-flex flex-row justify-content-around">
               <Card className="w-25 p-3 mt-5">
                 <Card.Header as="h5">{obj.title}</Card.Header>
                 <Card.Img variant="top" src={book} />
@@ -34,7 +34,9 @@ function Review() {
                   <Card.Title>{obj.name}</Card.Title>
                   <Card.Text>{obj.content}</Card.Text>
                   <Card.Title className="d-flex justify-content-end">{obj.rating}</Card.Title>
-                  <Button variant="primary">View Review</Button>
+                  <Button href="/review" variant="dark">
+                    View Review
+                  </Button>
                   <Rating />
                 </Card.Body>
               </Card>

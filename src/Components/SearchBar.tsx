@@ -1,23 +1,32 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Button, Col, Container, Form, Row } from 'react-bootstrap'
+import search1 from './img/search1.png'
+import TagsCloud from './TagsCloud'
 
 function SearchBar() {
   return (
-    <Container className="mt-5">
-      <Row className="justify-content-center">
-        <Col sm={6}>
-          <Form
-            className="d-flex"
-            onSubmit={(e) => {
-              e.preventDefault()
-            }}
-          >
-            <Form.Control type="search" placeholder="Search" className="me-2" aria-label="Search" />
-            <Button type="submit">Search</Button>
-          </Form>
-        </Col>
-      </Row>
+    <Container className="mt-5 d-flex justify-content-around">
+      <div className="flex-column">
+        <h1 className="text-capitalize w-75">Read, write and share reviews</h1>
+        <Row className="w-100 mt-5 mb-5">
+          <Col sm={10}>
+            <Form
+              className="d-flex"
+              onSubmit={(e) => {
+                e.preventDefault()
+              }}
+            >
+              <Form.Control type="search" placeholder="Search" className="me-2" aria-label="Search" />
+              <Button type="submit" className="btn btn-dark">
+                Search
+              </Button>
+            </Form>
+          </Col>
+        </Row>
+        <TagsCloud />
+      </div>
+      <img src={search1} className="rounded float-right w-10 z-0" alt=""></img>
     </Container>
   )
 }

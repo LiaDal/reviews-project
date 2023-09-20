@@ -6,7 +6,7 @@ import Navbar from 'react-bootstrap/Navbar'
 function BasicExample() {
   // const user =  useContext(userContext)
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar expand="lg" className="bg-body-tertiary" data-bs-theme="dark">
       <Container>
         {/* {user ? null : <div></div>} */}
         <Navbar.Brand href="#home">Review App</Navbar.Brand>
