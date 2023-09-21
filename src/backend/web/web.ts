@@ -23,27 +23,19 @@ export class WebApp {
     }
 
     this.app.use(cors(corsOptions))
-    // this.app.use((req, res, next) => {
-    //   res.header('Access-Control-Allow-Origin', '*')
-    //   res.header('Access-Control-Allow-Headers', '*')
-    //   res.header('Access-Control-Allow-Methods', '*')
-    //   console.log('Got', req.url, req.method)
-    //   next()
-    // })
 
     this.app.get(`${this.apiUrl}/users`, async (_, res) => {
       const users = await this.db.users.all()
       res.send(users)
     })
 
-    this.app.get(`${this.apiUrl}/reviews`, async (_, res) => {
+    this.app.get(`${this.apiUrl}/reviews`, async (req, res) => {
+      // req.search.params =>
       const reviews = await this.db.reviews.all()
       res.send(reviews)
     })
 
     this.app.post(`${this.apiUrl}/signup`, express.json(), async (req, res) => {
-      res.header('Access-Control-Allow-Origin', 'http://localhost:5173')
-      res.header('Access-Control-Allow-Credentials', 'true')
       const email = req.body.email
       const name = req.body.name
       const password = await bcrypt.hash(req.body.password, 10)
@@ -74,8 +66,6 @@ export class WebApp {
     })
 
     this.app.post(`${this.apiUrl}/login`, express.json(), async (req, res) => {
-      res.header('Access-Control-Allow-Origin', 'http://localhost:5173')
-      res.header('Access-Control-Allow-Credentials', 'true')
       const email = req.body.email
       const password = req.body.password
       const dbUser = await this.db.users.findByEmail(email)
@@ -105,16 +95,6 @@ export class WebApp {
       console.error('Logout successfull')
       res.sendStatus(200)
     })
-
-    // this.app.get(`${this.apiUrl}/me`, async (req, res) => {
-    //   // req.headers.cookie => 'password_hash' => dbUser
-    //   // if (dbUser) {
-    //   //   res.sendStatus(200)
-    //   // } else {
-    //   //   res.clearCookie('user')
-    //   //   res.sendStatus(401)
-    //   // }
-    // })
 
     await new Promise<void>((resolve) => {
       this.app.listen(this.port, () => {

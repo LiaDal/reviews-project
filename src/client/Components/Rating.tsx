@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { FaStar } from 'react-icons/fa'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-function Rating() {
+const Rating = () => {
   const [rating, setStar] = useState<number>(0)
   const [hover, setHover] = useState<number>(0)
 

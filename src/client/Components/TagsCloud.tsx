@@ -21,7 +21,7 @@ const data = [
   { value: 'thriller', count: 25 },
 ]
 
-export default function TagsCloud() {
+const TagsCloud = () => {
   return (
     <TagCloud
       className="w-75 justify-content-center"
@@ -32,3 +32,5 @@ export default function TagsCloud() {
     />
   )
 }
+
+export default TagsCloud

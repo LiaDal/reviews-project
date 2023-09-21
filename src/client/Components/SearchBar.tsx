@@ -4,7 +4,7 @@ import { Button, Col, Container, Form, Row } from 'react-bootstrap'
 import search1 from './img/search1.png'
 import TagsCloud from './TagsCloud'
 
-function SearchBar() {
+const SearchBar = () => {
   return (
     <Container className="mt-5 d-flex justify-content-around">
       <div className="flex-column">
@@ -26,7 +26,7 @@ function SearchBar() {
         </Row>
         <TagsCloud />
       </div>
-      <img src={search1} className="rounded float-right w-10 z-0" alt=""></img>
+      <img src={search1} className="rounded float-right w-10 z-0 w-50 h-50" alt=""></img>
     </Container>
   )
 }

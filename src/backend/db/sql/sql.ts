@@ -16,6 +16,11 @@ export const reviews = {
   deleteAll: sql('reviews/deleteAll.sql'),
 }
 
+export const tags = {
+  create: sql('tags/create.sql'),
+  add: sql('tags/add.sql'),
+}
+
 function sql(file: string): QueryFile {
   const fullPath: string = join(__dirname, file)
 
