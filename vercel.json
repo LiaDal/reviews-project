@@ -2,8 +2,8 @@
     "rewrites": [
         {
             "source": "/(.*)",
-            "destination": "../../build",
-            "outputDirectory": "./src/client"
+            "destination": "../../build"
         }
-    ]
+    ],
+    "outputDirectory": "build"
 }
