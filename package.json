@@ -23,7 +23,7 @@
   },
   "scripts": {
     "start": "vite",
-    "build": "vite build --emptyOutDir",
+    "build:dist": "vite build --emptyOutDir",
     "serve": "vite preview",
     "seed": "tsx ./src/backend/seed.ts",
     "server": "tsx watch ./src/backend/server.ts",
