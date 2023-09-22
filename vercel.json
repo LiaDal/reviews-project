@@ -1,10 +1,4 @@
 {
-    "builds": [
-        {
-            "src": "backend/web/web.ts",
-            "use": "@vercel/node"
-        }
-    ],
     "rewrites": [
         {
             "source": "/(.*)",
