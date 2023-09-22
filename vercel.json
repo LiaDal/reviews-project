@@ -1,8 +1,15 @@
 {
-    "routes": [
+    "version": 2,
+    "builds": [
         {
-            "src": "/[^.]+",
-            "dest": "client/index.html",
+            "src": "backend/web/web.ts",
+            "use": "@now/node"
+        }
+    ],
+    "rewrites": [
+        {
+            "source": "/(.*)",
+            "destination": "client/index.html",
             "status": 200
         }
     ]
