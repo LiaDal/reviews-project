@@ -1,10 +1,8 @@
 {
-    "outputDirectory": "./src/client",
-    "routes": [
+    "rewrites": [
         {
-            "src": "/[^.]+",
-            "dest": "/",
-            "status": 200
+            "source": "/(.*)",
+            "destination": "./src/client"
         }
     ]
 }
