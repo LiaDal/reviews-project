@@ -1,11 +1,4 @@
 {
-    "version": 2,
-    "builds": [
-        {
-            "src": "backend/web/web.ts",
-            "use": "@now/node"
-        }
-    ],
     "rewrites": [
         {
             "source": "/(.*)",
