@@ -5,5 +5,12 @@
             "destination": "../../build"
         }
     ],
-    "outputDirectory": "build"
+    "outputDirectory": "./src/client",
+    "routes": [
+        {
+            "src": "/[^.]+",
+            "dest": "/",
+            "status": 200
+        }
+    ]
 }
