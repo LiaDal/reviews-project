@@ -4,6 +4,7 @@ import type { Express } from 'express'
 import type { AppConfigT } from '../config/config'
 import type { DBApp } from '../db/db'
 import cors from 'cors'
+import jwt from 'jsonwebtoken'
 
 export class WebApp {
   app: Express
@@ -69,14 +70,15 @@ export class WebApp {
       const email = req.body.email
       const password = req.body.password
       const dbUser = await this.db.users.findByEmail(email)
+      const accessTokenSecret = ''
 
       if (dbUser != null) {
         const isSamePassword = await bcrypt.compare(password, dbUser.password_hash)
         if (isSamePassword) {
+          const accessToken = jwt.sign({ useremail: email }, accessTokenSecret)
           res
-            .cookie('user', req.body.email, {
-              maxAge: 1 * 24 * 60 * 60 * 1000,
-              httpOnly: true,
+            .json({
+              accessToken,
             })
             .send(dbUser)
         } else {
